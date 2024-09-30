@@ -64,21 +64,27 @@ def precision(net, memory_loader, valid_loader):
         for data, target in memory_loader:
             feature = net(data.to(device, non_blocking=True))
             feature_bank.append(feature)
-        feature_bank = torch.cat(feature_bank, dim=0).t().contiguous()
+        feature_bank = torch.cat(feature_bank, dim=0).contiguous() #[38301,dim]
         feature_labels = memory_loader.dataset.label.to(device, non_blocking=True)
+        posidx = memory_loader.dataset.posidx
+        pos_features = feature_bank[posidx]
+        pos_center = pos_features.mean(dim=0,keepdim=True)
+        negidx = memory_loader.dataset.negidx
+        neg_features = feature_bank[negidx]
+        neg_center = neg_features.mean(dim=0,keepdim=True)
 
 
         # loop validation data to predict the label by knn search
         valid_bar = tqdm(valid_loader)
         for data, target in valid_bar:
             data, target = data.to(device, non_blocking=True), target.to(device, non_blocking=True)
-            feature = net(data)
+            feature = net(data) #[bs,dim]
 
             total_num += data.size(0)
             # compute cos similarity between each feature vector and feature bank ---> [bs, 38301]
-            sim_matrix = torch.mm(feature, feature_bank)
-            sim_weight, sim_indices = sim_matrix.topk(k=1, dim=-1)
-            pred_labels = feature_labels[sim_indices.squeeze(-1)]
+            pos_sim = torch.mm(pos_center,feature.T).squeeze()
+            neg_sim = torch.mm(neg_center,feature.T).squeeze()
+            pred_labels = (pos_sim > neg_sim).float()
             equal_elements = torch.eq(pred_labels, target)
             total_top1 += torch.sum(equal_elements).item()
 
@@ -90,7 +96,7 @@ def precision(net, memory_loader, valid_loader):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Train')
     parser.add_argument('--root', type=str, default='./data', help='Path to data directory')
-    parser.add_argument('--batch_size', default=1024, type=int, help='Batch size in each mini-batch')
+    parser.add_argument('--batch_size', default=2048, type=int, help='Batch size in each mini-batch')
     parser.add_argument('--num_workers', default=0, type=int, help='Batch size in each mini-batch')
     parser.add_argument('--epochs', default=100, type=int, help='Number of sweeps over the dataset to train')
     parser.add_argument('--learning_rate', default=1e-3, type=float, help='Learning rate')
