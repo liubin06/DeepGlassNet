@@ -25,8 +25,8 @@ def init_seed(seed):
 
 def criterion(anchor,positive,negative):
     '''
-    :param batch: A mini batch of data, for BPR  batch.shape = [bs*3], for VBPR batch.shape = [bs*(1+M+N)]
-    :return:
+    :param batch: anchor,positive, negative features [bs,dim]
+    :return: loss
     '''
     pos_sim = torch.sum(anchor * positive,dim=-1) #[bs,]
     neg_sim = torch.sum(anchor * negative,dim=-1) #[bs,]
