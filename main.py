@@ -113,7 +113,7 @@ if __name__ == '__main__':
 
     train_data = utils.MyData(traindata, 19, train=True) # data augmentation, data normalization, and organize data as (anchor, postive, negative) triples for training.
     memor_data = utils.MyData(traindata,19, train=False) # only data normalization, and organize training data as (data, lable) tuples for KNN validation.
-    valid_data = utils.MyData(validdata, 19, train=False)# only data normalization, and organize training data as (data, lable) tuples for KNN validation.
+    valid_data = utils.MyData(validdata, 19, train=False)# only data normalization, and organize validating data as (data, lable) tuples for KNN validation.
 
     train_loader = DataLoader(train_data,                        #load data as minibatch for GPU computation.
                               batch_size=args.batch_size,
