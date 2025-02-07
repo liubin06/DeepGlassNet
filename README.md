@@ -49,8 +49,8 @@ python main.py --batch_size 1024 --epochs 100
 To train with proprietary datasets:
 
 1. **Data Formatting**:
-   - Arrange data with `n` component columns followed by Tg label column
-   - Preserve header-less CSV format (see sample data)
+   - Arrange data with `n` component columns followed by Tg label at last column
+   - Split data as `tran_tg.csv` and `validation_tg.csv`
 
 2. **Configuration**:
    ```python
