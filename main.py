@@ -71,13 +71,12 @@ def list_type(arg):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Train')
     parser.add_argument('--root', type=str, default='./data', help='Path to data directory')
-    parser.add_argument('--batch_size', default=2048, type=int, help='Batch size in each mini-batch')
-    parser.add_argument('--num_workers', default=8, type=int, help='Batch size in each mini-batch')
+    parser.add_argument('--batch_size', default=128, type=int, help='Batch size in each mini-batch')
+    parser.add_argument('--num_workers', default=0, type=int, help='Batch size in each mini-batch')
     parser.add_argument('--epochs', default=10, type=int, help='Number of sweeps over the dataset to train')
     parser.add_argument('--learning_rate', default=1e-6, type=float, help='Learning rate')
     parser.add_argument('--weight_decay', default=1e-7, type=float, help='Weight_decay')
     parser.add_argument('--num_components', default=18, type=int, help='Number of components')
-    parser.add_argument('--interval', default=[500, 600], type=list_type, help='The interval of glass transition temperatures to be SCREENED')
     parser.add_argument('--embedding_dim', default=128, type=int, help='The dimension of the embeddings associated with each component')
     parser.add_argument('--out_dim', default=512, type=int, help='The dimension of the out put feature')
     parser.add_argument('--fm_dim', default=4, type=int, help='The dimension for factorization of the adjacency matrix')
@@ -91,7 +90,8 @@ if __name__ == '__main__':
     print(args)
 
     ####################### Step1: Data Preparation #######################
-    print('The interval of glass transition temperatures to be SCREENED:', args.interval)
+    interval= [500,600]
+    print('The interval of glass transition temperatures to be SCREENED:', interval)
     train_path = args.root + '/train_tg.csv'
     valid_path = args.root + '/validation_tg.csv'
     test_path = args.root + '/test_tg.csv'
@@ -99,10 +99,10 @@ if __name__ == '__main__':
     validdata = utils.load_validate(valid_path)
     testdata = utils.load_test(test_path)
     mean, std = traindata.mean(axis=0) [:args.num_components], traindata.std(axis=0)[:args.num_components]
-    train_data = utils.MyData(traindata, mean, std, args.num_components, args.interval, args.noise_std, phase = 'Training')
-    memor_data = utils.MyData(traindata, mean, std, args.num_components, args.interval, args.noise_std, phase = 'Evaluation') 
-    valid_data = utils.MyData(validdata, mean, std, args.num_components, args.interval, args.noise_std, phase = 'Evaluation')
-    test_data  = utils.MyData(testdata , mean, std, args.num_components, args.interval, args.noise_std, phase = 'Screening')
+    train_data = utils.MyData(traindata, mean, std, args.num_components, interval, args.noise_std, phase = 'Training')
+    memor_data = utils.MyData(traindata, mean, std, args.num_components, interval, args.noise_std, phase = 'Evaluation')
+    valid_data = utils.MyData(validdata, mean, std, args.num_components, interval, args.noise_std, phase = 'Evaluation')
+    test_data  = utils.MyData(testdata , mean, std, args.num_components, interval, args.noise_std, phase = 'Screening')
     print("Number of training samples within desired GT :{}; Number of training samples out of desired GT interval:{}".format(sum(train_data.label),len(train_data)-sum(train_data.label)))
     print("Number of validating samples within desired GT :{}; Number of validating samples out of desired GT interval:{}".format(sum(valid_data.label),len(valid_data)-sum(valid_data.label)))
     print('Number of testing samples to be SCREENED :{}'.format (len(test_data)))
