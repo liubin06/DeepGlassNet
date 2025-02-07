@@ -6,9 +6,11 @@ We present a novel self-supervised learning framework for screening multi-compon
 
 The framework demonstrates excellent extensibility to other multi-component material screening applications, providing an advanced methodology for efficient glass design and establishing a foundation for self-supervised learning in various materials discovery tasks.
 
+<p align='left'>
+<img src='https://github.com/liubin06/Variational-BPR/blob/main/bound.png' width='600'/>
+</p>
 **Figure**: Self-supervised learning workflow
 
-### Dataset
 The experimental dataset is derived from SciGlass Database v7.12, containing approximately 442,000 glass compositions. Each entry includes:
 - Mass fractions of 18 chemical compounds
 - Corresponding glass transition temperature (Tg) label
