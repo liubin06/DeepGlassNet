@@ -55,8 +55,8 @@ To train with proprietary datasets:
 2. **Configuration**:
    ```python
    # In main.py
-   parser.add_argument('--num_components', type=int, default=18)  # Set component count
-   interval = [300, 400]  # Define screening temperature range (℃)
+   parser.add_argument('--num_components', type=int, default=18)  # Set number of components
+   interval = [300, 400]  # Define desired screening temperature range (℃)
    ```
 
 3. **Execution**:
@@ -68,7 +68,7 @@ To train with proprietary datasets:
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 8. Citation
-If using this work in your research, please cite:
+If using this work in your research, please consider citing the following paper:
 ```bibtex
 @article{chen2024self,
       title={Self-supervised Learning for Glass Property Screening}, 
