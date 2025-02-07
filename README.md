@@ -7,7 +7,7 @@ We present a novel self-supervised learning framework for screening multi-compon
 The framework demonstrates excellent extensibility to other multi-component material screening applications, providing an advanced methodology for efficient glass design and establishing a foundation for self-supervised learning in various materials discovery tasks.
 
 <p align='left'>
-<img src='https://github.com/liubin06/Variational-BPR/blob/main/bound.png' width='600'/>
+<img src='https://github.com/liubin06/DeepGlassNet/blob/main/flow.png' width='800'/>
 </p>
 **Figure**: Self-supervised learning workflow
 
@@ -24,9 +24,9 @@ The experimental dataset is derived from SciGlass Database v7.12, containing app
 |------|-------------|
 | `utils.py` | Data loading utilities and GPU-optimized dataset organization |
 | `model.py` | DeepGlassNet backbone architecture implementation |
-| `evaluation.py` | Model performance evaluation on validation sets |
-| `screen.py` | Composition screening module for top-k candidate selection |
-| `main.py` | Central workflow controller (data processing, training, evaluation) |
+| `evaluation.py` | Model performance evaluation on validation set |
+| `screen.py` | Composition screening for top-k candidate selection on test set |
+| `main.py` | Central workflow controller (data processing, training, evaluation, screening) |
 
 ## 4. Configuration Flags
 | Parameter | Description |
@@ -41,7 +41,7 @@ The experimental dataset is derived from SciGlass Database v7.12, containing app
 ## 5. Model Training
 Execute the following command to initiate training:
 ```bash
-python main.py --batch_size 64 --epochs 100 --learning_rate 1e-4 --weight_decay 1e-5
+python main.py --batch_size 1024 --epochs 100 
 ```
 
 ## 6. Customization Guide
@@ -55,7 +55,7 @@ To train with proprietary datasets:
    ```python
    # In main.py
    parser.add_argument('--num_components', type=int, default=18)  # Set component count
-   target_interval = [300, 400]  # Define screening temperature range (℃)
+   interval = [300, 400]  # Define screening temperature range (℃)
    ```
 
 3. **Execution**:
@@ -69,10 +69,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 8. Citation
 If using this work in your research, please cite:
 ```bibtex
-@article{deepglassnet2023,
-  title={DeepGlassNet: A Self-Supervised Framework for Multi-Component Glass Design},
-  author={Author et al.},
-  journal={Journal of Materials Informatics},
-  year={2023}
+@article{chen2024selfsupervisedlearningglassproperty,
+      title={Self-supervised Learning for Glass Property Screening}, 
+      author={Meijing Chen and Bin Liu and Ying Liu and Tianrui Li},
+      year={2024},
+      archivePrefix={arXiv},
+      url={https://arxiv.org/abs/2410.24083}, 
 }
 ```
