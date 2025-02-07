@@ -128,7 +128,6 @@ if __name__ == '__main__':
                               drop_last=False,
                               num_workers=args.num_workers
                               )
-    component = np.array(pd.read_csv(args.root + '/result.csv',header=None,sep=',',encoding='utf-8'))
 
 
     ######################## Step2: Model Setup #######################
