@@ -5,11 +5,10 @@ import torch
 from torch.utils.data import Dataset, DataLoader
 
 
-
 def load_train(data_path):
     '''
     :param ：train data path
-    :return: ndarray 
+    :return: ndarray
     '''
     data = pd.read_csv(data_path,
                        header=None,
@@ -22,7 +21,7 @@ def load_train(data_path):
 def load_validate(data_path):
     '''
     :param ：validate data path
-    :return: ndarray 
+    :return: ndarray
     '''
     data = pd.read_csv(data_path,
                        header=None,
@@ -31,10 +30,11 @@ def load_validate(data_path):
     print('Number of validating samples: {}'.format(data.shape[0]))
     return np.array(data)
 
+
 def load_test(data_path):
     '''
     :param ：validate data path
-    :return: ndarray 
+    :return: ndarray
     '''
     data = pd.read_csv(data_path,
                        header=None,
@@ -53,38 +53,41 @@ class MyData(Dataset):
         :param interval: the interval of glass transition temperatures to be selected
         '''
         self.input_dim = input_dim
-        self.data = torch.tensor(data[:, :self.input_dim],dtype=torch.float32)
-        self.interval = interval
+        self.data = torch.tensor(data[:, :self.input_dim], dtype=torch.float32)
         self.noise_std = noise_std
         self.phase = phase
-        self.mean = torch.tensor(mean,dtype=torch.float32)
-        self.std= torch.tensor(std,dtype=torch.float32)
-        
+        self.mean = torch.tensor(mean, dtype=torch.float32)
+        self.std = torch.tensor(std, dtype=torch.float32)
+
         if self.phase != 'Screening':
-            self.GT = torch.tensor(data[:, self.input_dim],dtype=torch.float32)
-            self.label = torch.tensor([ self.interval[0]<= self.GT[id] <= self.interval[1] for id in range(len(self))]).float()
+            self.GT = torch.tensor(data[:, self.input_dim], dtype=torch.float32)
+            self.label = torch.tensor(
+                [interval[0] <= self.GT[id] <= interval[1] for id in range(len(self))]).float()
+
             self.valid_id = [id for id in range(len(self)) if self.label[id] == 1.]
-            self.invalid_id = [id for id in range(len(self)) if self.label[id] == 0.] 
-        
+            self.invalid_id = [id for id in range(len(self)) if self.label[id] == 0.]
 
     def __getitem__(self, idx):
         if self.phase == 'Training':
             feature = self.data[idx]
             label = self.label[idx]
-            if label==1.:
+            if label == 1.:
                 pos = self.data[np.random.choice(self.valid_id)]
                 neg = self.data[np.random.choice(self.invalid_id)]
             else:
                 pos = self.data[np.random.choice(self.invalid_id)]
                 neg = self.data[np.random.choice(self.valid_id)]
-            feature, pos, neg  = self.perbulation(1, self.noise_std, feature),self.perbulation(1, self.noise_std, pos),self.perbulation(1, self.noise_std, neg)
+            feature, pos, neg = self.perbulation(1, self.noise_std, feature), self.perbulation(1, self.noise_std,
+                                                                                               pos), self.perbulation(1,
+                                                                                                                      self.noise_std,
+                                                                                                                      neg)
             return self.normalize(feature), self.normalize(pos), self.normalize(neg)
-        
+
         elif self.phase == 'Evaluation':
             feature = self.data[idx]
             label = self.label[idx]
-            return self.normalize(feature),label
-        
+            return self.normalize(feature), label
+
         elif self.phase == 'Screening':
             feature = self.data[idx]
             return self.normalize(feature)
@@ -102,7 +105,6 @@ class MyData(Dataset):
         perb = torch.normal(miu, sigma, [self.input_dim])
         augmentation = feature * perb
 
-
         return augmentation
 
     def normalize(self, feature):
@@ -110,7 +112,7 @@ class MyData(Dataset):
         :param feature: input feature of dimension 19
         :return: normalized feature with summation of all components equal to 1
         '''
-        normalized_feature = (feature-self.mean)/self.std
+        normalized_feature = (feature - self.mean) / self.std
         return normalized_feature
 
 
