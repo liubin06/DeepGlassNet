@@ -9,6 +9,7 @@ The framework demonstrates excellent extensibility to other multi-component mate
 <p align='left'>
 <img src='https://github.com/liubin06/DeepGlassNet/blob/main/flow.png' width='800'/>
 </p>
+
 **Figure**: Self-supervised learning workflow
 
 The experimental dataset is derived from SciGlass Database v7.12, containing approximately 442,000 glass compositions. Each entry includes:
@@ -69,7 +70,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 8. Citation
 If using this work in your research, please cite:
 ```bibtex
-@article{chen2024selfsupervisedlearningglassproperty,
+@article{chen2024self,
       title={Self-supervised Learning for Glass Property Screening}, 
       author={Meijing Chen and Bin Liu and Ying Liu and Tianrui Li},
       year={2024},
