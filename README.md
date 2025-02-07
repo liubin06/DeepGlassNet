@@ -55,13 +55,13 @@ To train with proprietary datasets:
 2. **Configuration**:
    ```python
    # In main.py
-   parser.add_argument('--num_components', type=int, default=18)  # Set number of components
-   interval = [300, 400]  # Define desired screening temperature range (℃)
+   parser.add_argument('--num_components', type=int, default=SET_YOUR_COMPONENT_NUM)  # Set number of components
+   interval = [300, 400]  # Set YOUR desired screening temperature range (℃)
    ```
 
 3. **Execution**:
    ```bash
-   python main.py --num_components YOUR_COMPONENT_NUM
+   python main.py 
    ```
 
 ## 7. License
