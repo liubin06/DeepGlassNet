@@ -75,6 +75,6 @@ If using this work in your research, please consider citing the following paper:
       author={Meijing Chen and Bin Liu and Ying Liu and Tianrui Li},
       year={2024},
       archivePrefix={arXiv},
-      url={https://arxiv.org/abs/2410.24083}, 
+      url={https://arxiv.org/abs/2410.24083v2}, 
 }
 ```
