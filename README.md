@@ -50,7 +50,8 @@ To train with proprietary datasets:
 
 1. **Data Formatting**:
    - Arrange data with `n` component columns followed by Tg label at last column
-   - Split data as `tran_tg.csv` and `validation_tg.csv`
+   - Split data as `tran_tg.csv` and `validation_tg.csv`.
+   - Replace the data you want to scan with the `test_tg.csv` file in the same format.
 
 2. **Configuration**:
    ```python
