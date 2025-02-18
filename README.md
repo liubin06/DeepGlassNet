@@ -71,7 +71,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 If using this work in your research, please consider citing the following paper:
 ```bibtex
 @article{chen2024self,
-      title={Self-supervised Learning for Glass Property Screening}, 
+      title={Self-Supervised Learning for Glass Composition Screening}, 
       author={Meijing Chen and Bin Liu and Ying Liu and Tianrui Li},
       year={2024},
       archivePrefix={arXiv},
