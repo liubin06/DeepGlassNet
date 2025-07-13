@@ -11,7 +11,7 @@ def load_train(data_path):
     :return: ndarray
     '''
     data = pd.read_csv(data_path,
-                       header=None,
+                       header=0,
                        sep=',',
                        encoding='utf-8')
     print('Number of training samples: {}'.format(data.shape[0]))
@@ -24,7 +24,7 @@ def load_validate(data_path):
     :return: ndarray
     '''
     data = pd.read_csv(data_path,
-                       header=None,
+                       header=0,
                        sep=',',
                        encoding='utf-8')
     print('Number of validating samples: {}'.format(data.shape[0]))
@@ -37,7 +37,7 @@ def load_test(data_path):
     :return: ndarray
     '''
     data = pd.read_csv(data_path,
-                       header=None,
+                       header=0,
                        sep=',',
                        encoding='utf-8')
     return np.array(data)
