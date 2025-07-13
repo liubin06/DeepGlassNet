@@ -46,11 +46,11 @@ def load_test(data_path):
 class MyData(Dataset):
     def __init__(self, data, mean, std, input_dim, interval, noise_std, phase):
         '''
-        :param data: ndarray with shape (n_samples, n_features+1 property)
+        :param data: ndarray with shape (n_features and 1 property as label)
         :param input_dim: number of input features (components)
         :param train: boolean indicating for loading training set or validation set
         :param std: the standard deviation of the noise for data augmentation
-        :param interval: the interval of glass transition temperatures to be selected
+        :param interval: the interval of glass transition temperatures to be screened
         '''
         self.input_dim = input_dim
         self.data = torch.tensor(data[:, :self.input_dim], dtype=torch.float32)
