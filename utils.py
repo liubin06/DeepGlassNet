@@ -109,8 +109,8 @@ class MyData(Dataset):
 
     def normalize(self, feature):
         '''
-        :param feature: input feature of dimension 19
-        :return: normalized feature with summation of all components equal to 1
+        :param feature: input feature of dimension 18
+        :return: z-scored normalized feature 
         '''
         normalized_feature = (feature - self.mean) / self.std
         return normalized_feature
