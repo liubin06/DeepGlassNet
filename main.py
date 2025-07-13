@@ -73,7 +73,7 @@ if __name__ == '__main__':
     parser.add_argument('--root', type=str, default='./data', help='Path to data directory')
     parser.add_argument('--batch_size', default=128, type=int, help='Batch size in each mini-batch')
     parser.add_argument('--num_workers', default=0, type=int, help='Batch size in each mini-batch')
-    parser.add_argument('--epochs', default=10, type=int, help='Number of sweeps over the dataset to train')
+    parser.add_argument('--epochs', default=100, type=int, help='Number of sweeps over the dataset to train')
     parser.add_argument('--learning_rate', default=1e-6, type=float, help='Learning rate')
     parser.add_argument('--weight_decay', default=1e-7, type=float, help='Weight_decay')
     parser.add_argument('--num_components', default=18, type=int, help='Number of components')
@@ -148,7 +148,7 @@ if __name__ == '__main__':
             pre,auc =evaluation.eval(model,memor_loader,valid_loader)
             result.append([pre,auc])
             print('Validation Epoch: [{}/{}]: Precision:{:.1f}%, AUC:{:.4f}' .format(epoch, args.epochs,pre*100,auc))
-        if epoch % 5 == 0:
+        if epoch % 1 == 0:
             screened_id = screening.screen(model,memor_loader,test_loader,epoch,args)
             print('Top-10 Screened Samples at Epoch: [{}/{}]'.format(epoch, args.epochs))
             predict = testdata[screened_id]
