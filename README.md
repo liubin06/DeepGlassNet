@@ -64,7 +64,8 @@ To train with proprietary datasets:
    ```bash
    python main.py 
    ```
-
+You may also contact `binliu@swjtu.edu.cn` **for further assistance**.
+   
 ## 7. License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
