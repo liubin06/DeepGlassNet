@@ -84,12 +84,12 @@ python main.py
 ```  
 
 
-### 6.5 **Generalization Notes**  
+#### 6.5 **Generalization Notes**  
 - **Task flexibility**: The framework is designed for **any continuous label screening task** (e.g., material property optimization, chemical reaction yield prediction, sensor signal threshold detection).  
 - **Physical constraints**: For material-specific tasks, ensure input features comply with domain rules (e.g., component ratios summing to 100%).  
 
 
-### 6.6 **Further Assistance**  
+#### 6.6 **Further Assistance**  
 For task-specific adjustments or technical support, contact `binliu@swjtu.edu.cn`. 
    
 ## 7. License
