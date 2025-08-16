@@ -26,7 +26,7 @@ The experimental dataset is derived from SciGlass Database v7.12, containing app
 | `utils.py` | Data loading utilities and GPU-optimized dataset organization |
 | `model.py` | DeepGlassNet backbone architecture implementation |
 | `evaluation.py` | Model performance evaluation on validation set |
-| `screen.py` | Composition screening for top-k candidate selection on test set |
+| `screening.py` | Composition screening for top-k candidate selection on test set |
 | `main.py` | Central workflow controller (data processing, training, evaluation, screening) |
 
 ## 4. Configuration Flags
