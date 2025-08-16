@@ -50,7 +50,7 @@ python main.py --batch_size 1024 --epochs 100
 This guide demonstrates how to adapt the framework for **any multi-component label screening task** (not limited to glass transition temperature, Tg), showcasing its generality for scenarios involving multi-feature input and continuous label interval screening.  
 
 
-### 6.1 **Data Formatting**  
+#### 6.1 **Data Formatting**  
 Organize your dataset to fit the universal input-output structure:  
 - **Input features**: `n` columns for component/feature values (e.g., chemical compositions, material parameters).  
 - **Target label**: A single column for the continuous label to screen (e.g., Tg for glass, yield strength for alloys, etc.), placed as the last column.  
@@ -60,7 +60,7 @@ Organize your dataset to fit the universal input-output structure:
   - Screening set: Save as `test.csv` (contains **only** the `n` component/feature columns, **no label**), used for screen most promissing candidate samples.  
 
 
-### 6.2 **Define Your Target Label Interval**  
+#### 6.2 **Define Your Target Label Interval**  
 Specify the continuous label interval for screening in `main.py`. This can be any numerical range relevant to your task (e.g., strength thresholds, temperature ranges, etc.):  
 ```python  
 # In main.py  
@@ -68,7 +68,7 @@ interval = [LOWER_BOUND, UPPER_BOUND]  # Replace with your target label interval
 ```  
 
 
-### 6.3 **Configure Feature Dimensions**  
+#### 6.3 **Configure Feature Dimensions**  
 Set the number of input features (`n`) to match your dataset’s component count. This parameter is **task-agnostic** and applies to any multi-component scenario:  
 ```python  
 # In main.py  
@@ -76,7 +76,7 @@ parser.add_argument('--num_components', type=int, default=NUM_FEATURES)  # Repla
 ```  
 
 
-### 6.4 **Execute the Screening Pipeline**  
+#### 6.4 **Execute the Screening Pipeline**  
 Run the following command to train the model and generate top candidates that fall within your specified label interval. The framework automatically adapts to your task’s feature-label mapping:  
 ```bash  
 python main.py  
