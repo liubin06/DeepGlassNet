@@ -45,31 +45,52 @@ Execute the following command to initiate training:
 python main.py --batch_size 1024 --epochs 100 
 ```
 
-## 6. Customization Guide
-To train with proprietary datasets:
 
-1. **Data Formatting**:
-   - Arrange data with `n` component columns followed by Tg label at last column
-   - Split data as `tran_tg.csv` and `validation_tg.csv`.
-   - Replace the data you want to scan that **only contains `n` component columns** (without labels) with the `test_tg.csv` file .
+## 6. Customization Guide  
+This guide demonstrates how to adapt the framework for **any multi-component label screening task** (not limited to glass transition temperature, Tg), showcasing its generality for scenarios involving multi-feature input and continuous label interval screening.  
 
-2. **Specify your desired label screening interval**:
-   ```python
-   # In main.py
-   interval = [300, 400]  # Set YOUR desired label screening interval
-   ```
-   
-3. **Configuration**:
-   ```python
-   # In main.py
-   parser.add_argument('--num_components', type=int, default=SET_YOUR_COMPONENT_NUM)  # Set number of components
-   ```
 
-4. **Execution**:
-   ```bash
-   python main.py  # Model will output top-10 candidate samples that meet YOUR desired label screening interval in test set.
-   ```
-5. You may also contact `binliu@swjtu.edu.cn` **for further assistance**.
+### 6.1 **Data Formatting**  
+Organize your dataset to fit the universal input-output structure:  
+- **Input features**: `n` columns for component/feature values (e.g., chemical compositions, material parameters).  
+- **Target label**: A single column for the continuous label to screen (e.g., Tg for glass, yield strength for alloys, etc.), placed as the last column.  
+- **Dataset split**:  
+  - Training set: Save as `train.csv` (contains both features and labels).  
+  - Validation set: Save as `validation.csv` (contains both features and labels).  
+  - Screening set: Save as `test.csv` (contains **only** the `n` component/feature columns, **no label**), used for screen most promissing candidate samples.  
+
+
+### 6.2 **Define Your Target Label Interval**  
+Specify the continuous label interval for screening in `main.py`. This can be any numerical range relevant to your task (e.g., strength thresholds, temperature ranges, etc.):  
+```python  
+# In main.py  
+interval = [LOWER_BOUND, UPPER_BOUND]  # Replace with your target label interval (e.g., [200, 300] for a strength metric)  
+```  
+
+
+### 6.3 **Configure Feature Dimensions**  
+Set the number of input features (`n`) to match your dataset’s component count. This parameter is **task-agnostic** and applies to any multi-component scenario:  
+```python  
+# In main.py  
+parser.add_argument('--num_components', type=int, default=NUM_FEATURES)  # Replace "NUM_FEATURES" with your actual feature count (e.g., 5 for a 5-component material)  
+```  
+
+
+### 6.4 **Execute the Screening Pipeline**  
+Run the following command to train the model and generate top candidates that fall within your specified label interval. The framework automatically adapts to your task’s feature-label mapping:  
+```bash  
+python main.py  
+# Output: Top-10 candidate samples from `test.csv` whose predicted labels match your interval.  
+```  
+
+
+### 6.5 **Generalization Notes**  
+- **Task flexibility**: The framework is designed for **any continuous label screening task** (e.g., material property optimization, chemical reaction yield prediction, sensor signal threshold detection).  
+- **Physical constraints**: For material-specific tasks, ensure input features comply with domain rules (e.g., component ratios summing to 100%).  
+
+
+### 6.6 **Further Assistance**  
+For task-specific adjustments or technical support, contact `binliu@swjtu.edu.cn`. 
    
 ## 7. License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
