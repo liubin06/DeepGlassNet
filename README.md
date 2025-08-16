@@ -53,18 +53,23 @@ To train with proprietary datasets:
    - Split data as `tran_tg.csv` and `validation_tg.csv`.
    - Replace the data you want to scan that **only contains `n` component columns** (without labels) with the `test_tg.csv` file .
 
-2. **Configuration**:
+2. **Specify your desired label screening interval**:
+   ```python
+   # In main.py
+   interval = [300, 400]  # Set YOUR desired label screening interval
+   ```
+   
+3. **Configuration**:
    ```python
    # In main.py
    parser.add_argument('--num_components', type=int, default=SET_YOUR_COMPONENT_NUM)  # Set number of components
-   interval = [300, 400]  # Set YOUR desired screening temperature range (℃)
    ```
 
-3. **Execution**:
+4. **Execution**:
    ```bash
-   python main.py 
+   python main.py  # Model will output top-10 candidate samples that meet YOUR desired label screening interval in test set.
    ```
-4. You may also contact `binliu@swjtu.edu.cn` **for further assistance**.
+5. You may also contact `binliu@swjtu.edu.cn` **for further assistance**.
    
 ## 7. License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
