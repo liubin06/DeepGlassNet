@@ -2,7 +2,7 @@
 # DeepGlassNet: Self-Supervised Learning for Multi-Component Glass Composition Screening
 
 ## 1. Introduction
-We present a novel self-supervised learning framework for screening multi-component glass compositions within predefined glass transition temperature (Tg) intervals (also applicable to **any multi-component label screening task**, see **Sec. 6. Customization Guide**). The composition screening task is formalized as a classification problem, aming at classifying samples that meet predifined label intervals. We introduce an innovative data augmentation strategy based on asymptotic theory to enhance training dataset robustness and improve model resilience to noise. A specialized feature extraction backbone architecture named DeepGlassNet is designed to capture complex interactions among different glass components in multi-component systems. This architecture is integrated into our self-supervised framework to optimize the Area Under Curve (AUC) classification metric. 
+We present a novel self-supervised learning framework for screening multi-component glass compositions within predefined glass transition temperature (Tg) intervals (also applicable to **other multi-component label screening task**, see [**Customization Guide**](#guide). The composition screening task is formalized as a classification problem, aming at classifying samples that meet predifined label intervals. We introduce an innovative data augmentation strategy based on asymptotic theory to enhance training dataset robustness and improve model resilience to noise. A specialized feature extraction backbone architecture named DeepGlassNet is designed to capture complex interactions among different glass components in multi-component systems. This architecture is integrated into our self-supervised framework to optimize the Area Under Curve (AUC) classification metric. 
 
 The framework demonstrates excellent extensibility to other multi-component material screening applications, providing an advanced methodology for efficient material design and establishing a foundation for self-supervised learning in various materials discovery tasks.
 
@@ -46,6 +46,7 @@ python main.py --batch_size 1024 --epochs 100
 ```
 
 
+<a id="guide"></a>
 ## 6. Customization Guide  
 This guide demonstrates how to adapt the framework for **any multi-component label screening task** (not limited to glass transition temperature, Tg).  
 
