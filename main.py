@@ -150,11 +150,12 @@ if __name__ == '__main__':
             print('Validation Epoch: [{}/{}]: Precision:{:.1f}%, AUC:{:.4f}' .format(epoch, args.epochs,pre*100,auc))
         if epoch % 5 == 0:
             screened_id = screening.screen(model,memor_loader,test_loader,epoch,args)
-            print('Top-10 Screened Samples at Epoch: [{}/{}]'.format(epoch, args.epochs))
+            print('Top-20 Screened Samples at Epoch: [{}/{}]'.format(epoch, args.epochs))
             predict = testdata[screened_id]
             print(predict)
     best_rest= np.array(result).max(axis=0)
     best_idx = np.array(result).argmax(axis=0)
     print('Best Result: (Precision:{} at Epoch: {}), (AUC:{:.4f} at Epoch {})'.format(best_rest[0],best_idx[0]+1,best_rest[1],best_idx[1]+1))
     print('\t')
+
 
