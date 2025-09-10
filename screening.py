@@ -43,6 +43,6 @@ def screen(net, memory_loader, test_loader,epoch,args):
         pos_score = torch.mm(pos_center, test_bank.T).squeeze() #[num_val]
         neg_score = torch.mm(neg_center, test_bank.T).squeeze()  # [num_val]
         score = (pos_score - neg_score)/ (pos_score + torch.abs(neg_score) )
-        sim_weight, sim_indices = score.topk(k=10, dim=-1)  # [bs,top-k]
+        sim_weight, sim_indices = score.topk(k=20, dim=-1)  # [bs,top-k]
     return np.array(sim_indices.cpu())
 
