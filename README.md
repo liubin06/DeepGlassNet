@@ -1,6 +1,26 @@
 
 # DeepGlassNet: Self-Supervised Learning for Multi-Component Glass Composition Screening
 
+If using this work in your research, please consider citing the following paper:
+```bibtex
+# bibtex
+@article{chen2024self,
+      title={Self-Supervised Learning for Glass Composition Screening}, 
+      author={Meijing Chen and Bin Liu and Ying Liu and Tianrui Li},
+      journal = {Acta Materialia},
+      volume = {301},
+      pages = {121509},
+      year = {2025},
+      issn = {1359-6454},
+      doi ={https://doi.org/10.1016/j.actamat.2025.121509}, 
+}
+```
+
+```APA
+# APA
+[1] Chen, M., Liu, B., Liu, Y., & Li, T. (2025). Self-Supervised Learning for Glass Composition Screening. Acta Materialia, 301, 121509.
+```
+
 ## 1. Introduction
 We present a novel self-supervised learning framework for screening multi-component glass compositions within predefined glass transition temperature (Tg) intervals (also applicable to **other multi-component material screening task**, see [**Customization Guide**](#guide) ). The composition screening task is formalized as a classification problem, aming at classifying samples that meet predifined label intervals. We introduce an innovative data augmentation strategy based on asymptotic theory to enhance training dataset robustness and improve model resilience to noise. A specialized feature extraction backbone architecture named DeepGlassNet is designed to capture complex interactions among different glass components in multi-component systems. This architecture is integrated into our self-supervised framework to optimize the Area Under Curve (AUC) classification metric. 
 
@@ -96,23 +116,4 @@ For task-specific adjustments or technical support, contact `binliu@swjtu.edu.cn
 ## 7. License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 8. Citation
-If using this work in your research, please consider citing the following paper:
-```bibtex
-# bibtex
-@article{chen2024self,
-      title={Self-Supervised Learning for Glass Composition Screening}, 
-      author={Meijing Chen and Bin Liu and Ying Liu and Tianrui Li},
-      journal = {Acta Materialia},
-      volume = {301},
-      pages = {121509},
-      year = {2025},
-      issn = {1359-6454},
-      doi ={https://doi.org/10.1016/j.actamat.2025.121509}, 
-}
-```
 
-```APA
-# APA
-[1] Chen, M., Liu, B., Liu, Y., & Li, T. (2025). Self-Supervised Learning for Glass Composition Screening. Acta Materialia, 301, 121509.
-```
