@@ -111,3 +111,8 @@ If using this work in your research, please consider citing the following paper:
       doi ={https://doi.org/10.1016/j.actamat.2025.121509}, 
 }
 ```
+
+```
+# APA
+[1] Chen, M., Liu, B., Liu, Y., & Li, T. (2025). Self-Supervised Learning for Glass Composition Screening. Acta Materialia, 301, 121509.
+```
