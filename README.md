@@ -103,8 +103,11 @@ If using this work in your research, please consider citing the following paper:
 @article{chen2024self,
       title={Self-Supervised Learning for Glass Composition Screening}, 
       author={Meijing Chen and Bin Liu and Ying Liu and Tianrui Li},
-      year={2024},
-      archivePrefix={arXiv},
-      url={https://arxiv.org/abs/2410.24083v2}, 
+      journal = {Acta Materialia},
+      volume = {301},
+      pages = {121509},
+      year = {2025},
+      issn = {1359-6454},
+      doi ={https://doi.org/10.1016/j.actamat.2025.121509}, 
 }
 ```
