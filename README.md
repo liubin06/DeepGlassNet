@@ -72,16 +72,17 @@ This guide demonstrates how to adapt the framework for **any multi-component lab
 
 
 #### 6.1 **Data Formatting**  
-Structure your dataset into a single CSV file following the universal input-output format:  
+(1) Structure your dataset into a single CSV file following the universal input-output format:  
 - **Input features**: The **first `n` columns** must contain component or feature values (e.g., chemical compositions, material parameters). These columns collectively represent the input characteristics of the samples.
 - **Target label**: The **last column** (immediately following the n input feature columns) should contain the continuous label (e.g., glass transition temperature for glassy materials, yield strength for alloy systems).
-  - Clarification: All data (both input features and target label) are consolidated into one CSV file with a strict column order:  
+- Clarification: All data (both input features and target label) are consolidated into one CSV file with a strict column order:  
 `[Feature Column 1], [Feature Column 2], ..., [Feature Column n], [Target Label Column]`  
 
-- **Dataset split**:  
+(2) **Dataset split**:  Split the data into train/validation set.
   - Training set: Save as `train.csv` (contains both features and labels for model training).  
   - Validation set: Save as `validation.csv` (contains both features and labels for model performance evaluation and hyperparameter fine-tuning).  
-- **Prepare YOUR Screening set**:
+
+(3) **Prepare YOUR Screening set**:
   - First, generate potential component combinations. This can be achieved via methods such as enumeration or theoretical derivation; these combinations should represent **theoretically feasible, potential** unseen compositions without sample labels. In general, a larger sample size is preferable to ensure comprehensive coverage of candidate compositions.
   - Save the generated component combinations as `test.csv`. Critically, this file must contain **only the ncomponent/feature columns** (i.e., no label column). This file will serve as the input for screening the most promising candidate samples from the screening set.
   - The model will screen and rank the top-k most promising samples from these potential compositions, thereby effectively narrowing the sample search space for subsequent experimental design and preparation.
