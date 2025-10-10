@@ -1,7 +1,7 @@
 
 # DeepGlassNet: Self-Supervised Learning for Multi-Component Glass Composition Screening
 
-If using this work in your research, please consider citing the following paper:
+This work is accepted for publication in [**Acta Materialia**](https://doi.org/10.1016/j.actamat.2025.121509) (a top-tier journal in materials science). Should you use this work in your research, please cite the following paper:
 ```bibtex
 # bibtex
 @article{chen2024self,
@@ -76,9 +76,12 @@ Organize your dataset to fit the universal input-output structure:
 - **Input features**: `n` columns for component/feature values (e.g., chemical compositions, material parameters).  
 - **Target label**: A single column for the continuous label to screen (e.g., Tg for glass, yield strength for alloys, etc.), placed as the last column.  
 - **Dataset split**:  
-  - Training set: Save as `train.csv` (contains both features and labels).  
-  - Validation set: Save as `validation.csv` (contains both features and labels).  
-  - Screening set: Save as `test.csv` (contains **only** the `n` component/feature columns, **no label**), used for screen most promissing candidate samples from test set.  
+  - Training set: Save as `train.csv` (contains both features and labels for model training).  
+  - Validation set: Save as `validation.csv` (contains both features and labels for model performance evaluation and hyperparameter fine-tuning).  
+- **Prepare YOUR Screening set**:
+  - First, generate potential component combinations. This can be achieved via methods such as enumeration or theoretical derivation; these combinations should represent **theoretically feasible, potential** unseen compositions without sample labels. In general, a larger sample size is preferable to ensure comprehensive coverage of candidate compositions.
+  - Save the generated component combinations as `test.csv`. Critically, this file must contain **only the ncomponent/feature columns** (i.e., no label column). This file will serve as the input for screening the most promising candidate samples from the screening set.
+  - The model will screen and rank the top-k most promising samples from these potential compositions, thereby effectively narrowing the sample search space for subsequent experimental design and preparation.
 
 
 #### 6.2 **Define Your Target Label Interval**  
