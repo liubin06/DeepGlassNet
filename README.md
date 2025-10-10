@@ -1,7 +1,7 @@
 
 # DeepGlassNet: Self-Supervised Learning for Multi-Component Glass Composition Screening
 
-This work is accepted for publication in [**Acta Materialia**](https://doi.org/10.1016/j.actamat.2025.121509) (a top-tier journal in materials science). Should you use this work in your research, please cite the following paper:
+This work is accepted for publication in [***Acta Materialia***](https://doi.org/10.1016/j.actamat.2025.121509) (a top-tier journal in materials science). Should you use this work in your research, please cite the following paper:
 ```bibtex
 # bibtex
 @article{chen2024self,
@@ -72,9 +72,12 @@ This guide demonstrates how to adapt the framework for **any multi-component lab
 
 
 #### 6.1 **Data Formatting**  
-Organize your dataset to fit the universal input-output structure:  
-- **Input features**: `n` columns for component/feature values (e.g., chemical compositions, material parameters).  
-- **Target label**: A single column for the continuous label to screen (e.g., Tg for glass, yield strength for alloys, etc.), placed as the last column.  
+Structure your dataset into a single CSV file following the universal input-output format:  
+- **Input features**: The **first `n` columns** must contain component or feature values (e.g., chemical compositions, material parameters). These columns collectively represent the input characteristics of the samples.
+- **Target label**: The **last column** (immediately following the n input feature columns) should contain the continuous label (e.g., glass transition temperature for glassy materials, yield strength for alloy systems).
+  - Clarification: All data (both input features and target label) are consolidated into one CSV file with a strict column order:  
+`[Feature Column 1], [Feature Column 2], ..., [Feature Column n], [Target Label Column]`  
+
 - **Dataset split**:  
   - Training set: Save as `train.csv` (contains both features and labels for model training).  
   - Validation set: Save as `validation.csv` (contains both features and labels for model performance evaluation and hyperparameter fine-tuning).  
