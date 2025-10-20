@@ -2,7 +2,7 @@
 # DeepGlassNet: Self-Supervised Learning for Multi-Component Glass Composition Screening
 
 This work is accepted for publication in [***Acta Materialia***](https://doi.org/10.1016/j.actamat.2025.121509) (a top-tier journal in materials science). Should you use this work in your research, please cite the following paper:
-```bibtex
+```
 # bibtex style
 @article{chen2024self,
       title={Self-Supervised Learning for Glass Composition Screening}, 
@@ -16,8 +16,8 @@ This work is accepted for publication in [***Acta Materialia***](https://doi.org
 }
 ```
 
-```APA style
-# APA
+``` 
+# APA style
 [1] Chen, M., Liu, B., Liu, Y., & Li, T. (2025). Self-Supervised Learning for Glass Composition Screening. Acta Materialia, 301, 121509.
 ```
 
