@@ -3,7 +3,7 @@
 
 This work is accepted for publication in [***Acta Materialia***](https://doi.org/10.1016/j.actamat.2025.121509) (a top-tier journal in materials science). Should you use this work in your research, please cite the following paper:
 ```bibtex
-# bibtex
+# bibtex style
 @article{chen2024self,
       title={Self-Supervised Learning for Glass Composition Screening}, 
       author={Meijing Chen and Bin Liu and Ying Liu and Tianrui Li},
@@ -16,7 +16,7 @@ This work is accepted for publication in [***Acta Materialia***](https://doi.org
 }
 ```
 
-```APA
+```APA style
 # APA
 [1] Chen, M., Liu, B., Liu, Y., & Li, T. (2025). Self-Supervised Learning for Glass Composition Screening. Acta Materialia, 301, 121509.
 ```
