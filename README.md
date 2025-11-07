@@ -2,6 +2,7 @@
 [![DOI](https://img.shields.io/badge/DOI-10.1016%2Fj.actamat.2025.121509-royalblue)](https://doi.org/10.1016/j.actamat.2025.121509)
 # DeepGlassNet: Self-Supervised Learning for Multi-Component Glass Composition Screening
 
+## 📄 Citation 
 This work is accepted for publication in [***Acta Materialia***](https://doi.org/10.1016/j.actamat.2025.121509) (a top-tier journal in materials science). Should you use this work in your research, please cite the following paper:
 ```
 # bibtex style
@@ -85,7 +86,7 @@ This guide demonstrates how to adapt the framework for **any multi-component lab
 
 (3) **Prepare YOUR Screening set**:
   - First, generate potential component combinations. This can be achieved via methods such as enumeration or theoretical derivation; these combinations should represent **theoretically feasible, potential** unseen compositions without sample labels. In general, a larger sample size is preferable to ensure comprehensive coverage of candidate compositions.
-  - Save the generated component combinations as `test.csv`. Critically, this file must contain **only the ncomponent/feature columns** (i.e., no label column). This file will serve as the input for screening the most promising candidate samples from the screening set.
+  - Save the generated component combinations as `test.csv`. Critically, this file must contain **only the `n` component/feature columns** (i.e., no label column). This file will serve as the input for screening the most promising candidate samples from the screening set.
   - The model will screen and rank the top-k most promising samples from these potential compositions, thereby effectively narrowing the sample search space for subsequent experimental design and preparation.
 
 
@@ -119,7 +120,7 @@ python main.py
 
 
 #### 6.6 **Further Assistance**  
-For task-specific adjustments or technical support, contact `binliu@swjtu.edu.cn`. 
+For task-specific adjustments or technical support, contact **Bin Liu**: binliu@swjtu.edu.cn
    
 ## 7. License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
