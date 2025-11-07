@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/784131738.svg)](https://doi.org/10.1016/j.actamat.2025.121509)
+
 
 # DeepGlassNet: Self-Supervised Learning for Multi-Component Glass Composition Screening
 
