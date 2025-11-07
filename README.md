@@ -1,4 +1,5 @@
-[![DOI](https://zenodo.org/badge/784131738.svg)](https://doi.org/10.1016/j.actamat.2025.121509)
+[![Academic Paper](https://img.shields.io/badge/Acta_Materialia-2025-important)](https://doi.org/10.1016/j.actamat.2025.121509)
+[![DOI](https://img.shields.io/badge/DOI-10.1016%2Fj.actamat.2025.121509-royalblue)](https://doi.org/10.1016/j.actamat.2025.121509)
 # DeepGlassNet: Self-Supervised Learning for Multi-Component Glass Composition Screening
 
 This work is accepted for publication in [***Acta Materialia***](https://doi.org/10.1016/j.actamat.2025.121509) (a top-tier journal in materials science). Should you use this work in your research, please cite the following paper:
