@@ -61,13 +61,7 @@ def train(net, data_loader, train_optimizer):
 
     return total_loss / total_num
 
-def list_type(arg):
-    return [int(x) for x in arg[1:-1].split(',')]
 
-
-
-
-    return total_top1 / total_num * 100
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Train')
     parser.add_argument('--root', type=str, default='./data', help='Path to data directory')
@@ -157,6 +151,7 @@ if __name__ == '__main__':
     best_idx = np.array(result).argmax(axis=0)
     print('Best Result: (Precision:{} at Epoch: {}), (AUC:{:.4f} at Epoch {})'.format(best_rest[0],best_idx[0]+1,best_rest[1],best_idx[1]+1))
     print('\t')
+
 
 
 
