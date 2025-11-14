@@ -119,7 +119,7 @@ python main.py
 - **Physical constraints**: Ensure input features comply with domain rules.  
 
 
-## 7. 📞 **Further Assistance**  
+## 7. 📬 **Further Assistance**  
 For task-specific adjustments or technical support, contact **Bin Liu**: binliu@swjtu.edu.cn
    
 ## 8. 📜 License
