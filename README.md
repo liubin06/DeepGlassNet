@@ -45,11 +45,11 @@ The experimental dataset is derived from SciGlass Database v7.12, containing app
 ## 3. 🧩 Code Architecture
 | File | Description |
 |------|-------------|
-| `utils.py` | Data loading utilities and GPU-optimized dataset organization |
+| `utils.py` | Data processing utilities and GPU-optimized dataset organization |
 | `model.py` | DeepGlassNet backbone architecture implementation |
 | `evaluation.py` | Model performance evaluation on validation set |
 | `screening.py` | Composition screening for top-k candidate selection on test set |
-| `main.py` | Central workflow controller (data processing, training, evaluation, screening) |
+| `main.py` | Central workflow controller (data processing, feature extracting, training, evaluation, screening) |
 
 ## 4. ⚙️ Configuration Flags
 | Parameter | Description |
